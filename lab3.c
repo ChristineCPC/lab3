@@ -25,10 +25,11 @@ int** read_board_from_file(char* filename){
     {
         for(int col = 0; col < COL_SIZE; col++)
         {
-            fscanf(fp, "%d", &board[row][col]);
+            fscanf(fp, "%d,", &(board[row][col]));
         }
     }
 
+     
     return board;
 }
 
@@ -47,7 +48,7 @@ void *check_rows(void* param)
         
         int num = sudoku_board[data->starting_row][i];
         //printf("current number: %d\n", num);
-        
+        //printf("seen[%d] = %d\n",num-1,seen[num-1]);
         if(seen[num-1])
         {
             worker_validation[data->id] = 0;
